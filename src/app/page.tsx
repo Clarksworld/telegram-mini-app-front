@@ -3,11 +3,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAppStore } from "@/store/useAppStore";
+import { useRouter } from "next/navigation";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 export default function Home() {
   const { user, setUser, setInitData, setAuth } = useAppStore();
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [loadingStep, setLoadingStep] = useState("Initializing...");
   const [error, setError] = useState<string | null>(null);
@@ -144,7 +146,10 @@ export default function Home() {
             <p className="font-semibold">Trade</p>
             <p className="text-xs text-zinc-500">Buy/Sell assets</p>
           </button>
-          <button className="p-4 bg-zinc-800 rounded-2xl border border-zinc-700 hover:bg-zinc-700 transition-all text-left group">
+          <button
+            onClick={() => router.push('/deposit')}
+            className="p-4 bg-zinc-800 rounded-2xl border border-zinc-700 hover:bg-zinc-700 transition-all text-left group"
+          >
             <div className="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
               💰
             </div>
