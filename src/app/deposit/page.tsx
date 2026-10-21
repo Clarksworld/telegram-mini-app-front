@@ -56,6 +56,17 @@ export default function DepositPage() {
           <div className="bg-black p-4 rounded-2xl font-mono text-sm break-all border border-zinc-700 select-all">
             T_YOUR_WALLET_ADDRESS_HERE_123456789
           </div>
+
+          {user?.depositMemo && (
+            <div className="bg-blue-500/10 p-4 rounded-2xl border border-blue-500/30 space-y-2">
+              <p className="text-xs text-blue-400 uppercase font-bold tracking-wider">Required Memo</p>
+              <p className="text-lg font-mono font-bold text-white">{user.depositMemo}</p>
+              <p className="text-[10px] text-zinc-500 italic">
+                You MUST include this memo in your TON transaction to receive funds.
+              </p>
+            </div>
+          )}
+
           <p className="text-xs text-zinc-500 italic">
             Make sure to send only {currency} to this address.
           </p>
