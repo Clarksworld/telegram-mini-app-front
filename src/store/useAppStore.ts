@@ -1,18 +1,31 @@
 import { create } from 'zustand';
 
-interface User {
-  id: number;
-  first_name: string;
-  last_name?: string;
-  username?: string;
-  language_code?: string;
+export interface WalletInfo {
+  id: string;
+  currency: string;
+  address: string | null;
+  balance: string;
+  lockedBalance: string;
+}
+
+export interface AppUser {
+  id: string;
+  telegramId: string;
+  username?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  languageCode?: string | null;
+  walletIndex: number;
+  tonDepositAddress?: string | null;
+  bep20DepositAddress?: string | null;
+  wallets: WalletInfo[];
 }
 
 interface AppState {
-  user: User | null;
+  user: AppUser | null;
   initData: string | null;
   isAuthenticated: boolean;
-  setUser: (user: User) => void;
+  setUser: (user: AppUser) => void;
   setInitData: (data: string) => void;
   setAuth: (status: boolean) => void;
   logout: () => void;
