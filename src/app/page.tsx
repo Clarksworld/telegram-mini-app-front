@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { useAppStore, AppUser } from "@/store/useAppStore";
 import { useRouter } from "next/navigation";
+import BottomNav from "@/components/BottomNav";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
@@ -172,7 +173,7 @@ export default function Home() {
             <p className="text-xs text-zinc-400">View unique deposit addresses</p>
           </button>
 
-          <button className="p-4 bg-zinc-900 rounded-2xl border border-zinc-800 hover:border-blue-500/50 hover:bg-zinc-850 transition-all text-left group shadow-sm">
+          <button onClick={() => router.push("/trade")} className="p-4 bg-zinc-900 rounded-2xl border border-zinc-800 hover:border-blue-500/50 hover:bg-zinc-850 transition-all text-left group shadow-sm">
             <div className="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform text-lg">
               📈
             </div>
@@ -248,27 +249,7 @@ export default function Home() {
       </main>
 
       {/* Bottom Navigation */}
-      <nav className="p-3 border-t border-zinc-800/80 bg-zinc-900/80 backdrop-blur-md flex justify-around items-center sticky bottom-0">
-        <button className="text-blue-400 flex flex-col items-center gap-1">
-          <span className="text-lg">🏠</span>
-          <span className="text-[10px] font-medium">Home</span>
-        </button>
-        <button
-          onClick={() => router.push("/deposit")}
-          className="text-zinc-400 flex flex-col items-center gap-1 hover:text-zinc-200 transition-colors"
-        >
-          <span className="text-lg">💰</span>
-          <span className="text-[10px] font-medium">Deposit</span>
-        </button>
-        <button className="text-zinc-400 flex flex-col items-center gap-1 hover:text-zinc-200 transition-colors">
-          <span className="text-lg">📊</span>
-          <span className="text-[10px] font-medium">Markets</span>
-        </button>
-        <button className="text-zinc-400 flex flex-col items-center gap-1 hover:text-zinc-200 transition-colors">
-          <span className="text-lg">⚙️</span>
-          <span className="text-[10px] font-medium">Settings</span>
-        </button>
-      </nav>
+      <BottomNav />
     </div>
   );
 }

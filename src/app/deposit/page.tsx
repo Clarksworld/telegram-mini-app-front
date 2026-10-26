@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback, useRef } from "react";
 import axios, { AxiosError } from "axios";
 import { useAppStore, AppUser } from "@/store/useAppStore";
 import Link from "next/link";
+import BottomNav from "@/components/BottomNav";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
@@ -407,6 +408,9 @@ export default function DepositPage() {
           )}
         </div>
       </main>
+
+      {/* Bottom Navigation */}
+      <BottomNav />
     </div>
   );
 }
